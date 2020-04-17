@@ -13,7 +13,7 @@ import unicodedata
 from bs4 import BeautifulSoup, NavigableString
 from datetime import date
 orig_stdout = sys.stdout
-f = open('out_'+date.today().strftime("%y_%m_%d_%H_%M_%S")+'.txt', 'w')
+f = open('out_'+date.today().strftime("%y_%m_%d_%H_%M_%S")+'.txt', 'a')
 sys.stdout = f
 home_url    = 'https://www.elplazas.com/'
 suc         = '1013'
