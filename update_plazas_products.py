@@ -321,8 +321,7 @@ merchant_to_set_markup
 cont    = 0
 tasa    = tasa_cambio_bs_dollar()
 factor  = merchant_to_set_markup[get_all_merchants()['PIAZZA Automercados']]
-for row in products_plazas[342:]
-: #products_plazas:  #products_plazas[4:]
+for row in products_plazas:
     name        = row[2]
     price       = round((row[4]/tasa)*factor,2)
     category_id = row[0]
