@@ -15,6 +15,7 @@ from datetime import date
 orig_stdout = sys.stdout
 f = open('out_'+date.today().strftime("%y_%m_%d_%H_%M_%S")+'.txt', 'a')
 sys.stdout = f
+print(time.strftime("%H:%M:%S"))
 home_url    = 'https://www.elplazas.com/'
 suc         = '1013'
 home_folder = os.path.expanduser('~')
@@ -351,6 +352,7 @@ for row in products_plazas:
         if resp2==0:
             cont+=1
 print('Numero de registros procesador:',cont)
+print(time.strftime("%H:%M:%S"))
 sys.stdout = orig_stdout
 f.close()
 
