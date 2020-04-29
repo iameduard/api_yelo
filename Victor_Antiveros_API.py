@@ -33,11 +33,10 @@ orig_stdout = sys.stdout
 f = open('out_'+date.today().strftime("%y_%m_%d_%H_%M_%S")+'.txt', 'a')
 sys.stdout = f
 ########################################################
-json_key = json.load(open('creds.json'))
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('creds.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('creds02.json', scope)
 client = gspread.authorize(creds)
-sheet_victor_antiveros = client.open('Codificacion Productos Kiwua API').worksheet('Víctor Antivero (P&B)')
+sheet_victor_antiveros = client.open('codifica').worksheet('VictorAntivero')
 api_key             = 'aafb702727d770509efb0b2e7576ce4f'
 marketplace_user_id = 157755
 user_id             = int(get_all_merchants().get("Víctor Antivero"))
@@ -62,7 +61,7 @@ def concat_images(*args):
         return [i for i in args]
 
 def verify_insert_conditions(category_id,price,description,image_url):
-    if(category_id!=None) and (price>0.1) and (image_url!=["", "", "", "", "", ""]):
+    if(category_id!=None) and (price>0.1):
         resp = True
     else:
         resp = False
