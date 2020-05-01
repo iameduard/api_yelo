@@ -119,20 +119,19 @@ def update_product(user_id,product_id,name,price,image_url=None,description=None
     except:
         return 1
 
-def get_product(product_id,name,price):
+def get_product(product_id,user_id):
     body={
             "api_key"            : "aafb702727d770509efb0b2e7576ce4f",
             "product_id"         : product_id,
             "user_id"            : user_id,
-            "marketplace_user_id": 157755,
-            "name"               : name,
-            "price"              : price
+            "marketplace_user_id": 157755
     }
     headers = {
     'Content-Type': "application/json",
     'cache-control': "no-cache"
     }
-    response = requests.post(url="https://beta-api.yelo.red/open/product/edit",
+    
+    response = requests.post(url="https://api.yelo.red/open/product/get",
                              data=json_to_string(body), headers=headers)
     return response.json()
 
