@@ -258,3 +258,26 @@ def concat_images(*args):
         return list(args)
     else:
         return [i for i in args]
+
+    def similarity_name_score(a,b):
+    """Levenshtein algorithm"""
+    return difflib.SequenceMatcher(a=a.lower(), b=b.lower()).ratio()
+
+def image_score(img):
+    score = 1
+    if img['status'] != 'activa':
+        score*=0.1
+    if img['format'] not in ['jpg','png']:
+        score*=0.8
+    if img['width'] != 300:
+        score*=0.5
+    if img['height'] != 300:
+        score*=0.5
+#     if 'Definitiva' not in img['folder']:
+#         score*=0.5
+    st_day=img['created_at'][:10]
+    cdays1 = (datetime.date(int(st_day[:4]),int(st_day[5:7]),int(st_day[8:10]))-datetime.date(2020,1,1)).days
+    st_day = date.today().strftime('%Y-%m-%d')
+    cdays2 = (datetime.date(int(st_day[:4]),int(st_day[5:7]),int(st_day[8:10]))-datetime.date(2020,1,1)).days
+    score*=cdays1/cdays2
+    return score
