@@ -59,7 +59,7 @@ def get_category_name(user_id,catalogue_id):
     headers             = {'Content-Type': "application/json",'cache-control': "no-cache"}
     response            = requests.request("POST", "https://api.yelo.red/open/catalogue/get", data=body, headers=headers)
     json1               = json.loads(response.text)   
-    return get_category(user_id,catalogue_id)['data']['result'][0]['name']
+    return json1['data']['result'][0]['name']
 
 def get_catalog(user_id):
     #Marketplace Kiwua
