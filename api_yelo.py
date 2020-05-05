@@ -259,7 +259,7 @@ def concat_images(*args):
     else:
         return [i for i in args]
 
-    def similarity_name_score(a,b):
+def similarity_name_score(a,b):
     """Levenshtein algorithm"""
     return difflib.SequenceMatcher(a=a.lower(), b=b.lower()).ratio()
 
