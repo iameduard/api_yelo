@@ -19,7 +19,7 @@ H24=now.strftime("%H%p")
 for script in schedule:
     if H24 in script.get(weekday):
         print(script['SCRIPT'],'-',str(now))
-        os.system(python script['SCRIPT'])
+        os.system(python3 script['SCRIPT'])
 sheet_executions = client.open('schedule').worksheet('executions')
 executions = sheet_executions.get_all_records()
 sheet_executions.update_cell(len(executions)+2, 1, str(now))
