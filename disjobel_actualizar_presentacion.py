@@ -8,14 +8,17 @@ import os.path
 import pprint
 import oauth2client
 import gspread
-from datetime import date
+from datetime import date, datetime
 from   oauth2client.service_account import ServiceAccountCredentials
 from bs4 import BeautifulSoup, NavigableString
 home_folder = os.path.expanduser('~')
 
 orig_stdout = sys.stdout
-f = open('out_'+date.today().strftime("%Y_%a")+'.txt', 'w')
+now = datetime.now()
+f = open('out_'+now.strftime("%Y_%a_%H")+'.txt', 'w')
 sys.stdout = f
+
+print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 
 def json_to_string(dic):
     def leerArregloStrs(valor):
@@ -395,5 +398,6 @@ for product in products:
                 cont2+=1
 print('Updated :',cont1,' records')
 print('Inserted:',cont2,' records')
+print('Fecha de finalizacion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 sys.stdout = orig_stdout
 f.close()
