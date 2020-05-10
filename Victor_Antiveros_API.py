@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # coding: utf-8
 import warnings
 warnings.filterwarnings('ignore')
@@ -30,7 +31,7 @@ from api_yelo import chang1
 # Step 1: Read Google Drive Excel Worksheet ..
 #######################################################
 orig_stdout = sys.stdout
-f = open('out_'+date.today().strftime("%y_%m_%d_%H_%M_%S")+'.txt', 'a')
+f = open('out_'+date.today().strftime("%Y_%a")+'.txt', 'a')
 sys.stdout = f
 ########################################################
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
