@@ -11,11 +11,12 @@ import sys
 import time
 import unicodedata
 from bs4 import BeautifulSoup, NavigableString
-from datetime import date
+from datetime import date, datetime
 orig_stdout = sys.stdout
-f = open('out_'+date.today().strftime("%y_%m_%d_%H_%M_%S")+'.txt', 'a')
+now = datetime.now()
+f = open('out_'+now.strftime("%Y_%a_%H")+'.txt', 'w')
 sys.stdout = f
-print(time.strftime("%H:%M:%S"))
+print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 home_url    = 'https://www.elplazas.com/'
 suc         = '1013'
 home_folder = os.path.expanduser('~')
@@ -351,7 +352,7 @@ for row in products_plazas:
         if resp2==0:
             cont+=1
 print('Numero de registros procesador:',cont)
-print(time.strftime("%H:%M:%S"))
+print('Fecha de finalizacion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 sys.stdout = orig_stdout
 f.close()
 
