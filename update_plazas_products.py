@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup, NavigableString
 from datetime import date, datetime
 orig_stdout = sys.stdout
 now = datetime.now()
-f = open('out_'+now.strftime("%Y_%a_%H")+'.txt', 'w')
+f = open('out_update_plazas_products_'+datetime.now().strftime('%Y_%m_%d_%H')+'.txt', 'a')
 sys.stdout = f
 print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 home_url    = 'https://www.elplazas.com/'
@@ -100,7 +100,7 @@ def update_product(user_id,product_id,name,price,image_url=None,description=None
     if description!=None: 
         body["description"]     = description
     if image_url!=None:
-        body["multi_image_url"] = [image_url]
+        body["multi_image_url"] = image_url
 
     headers = {
              "Content-Type"      : "application/json",
@@ -220,7 +220,7 @@ def insert_product(user_id, name, price, category_id,image_url=None, description
         payload["long_description_json"] = {"es": long_description}
     payload["parent_category_id"]    = category_id
     if image_url!=None:
-        payload["multi_image_url"]       = [image_url]
+        payload["multi_image_url"]       = image_url
     payload["inventory_enabled"]     = 0
     payload["available_quantity"]    = 100
     payload["price"]                 = price
@@ -338,7 +338,7 @@ for row in products_plazas:
                                        ,product_id  = product_id
                                        ,name        = name
                                        ,price       = price
-                                       ,image_url   = image_url
+                                       ,image_url   = [image_url]
                                        ,description = description)
         if resp1==0:
             cont+=1
@@ -347,7 +347,7 @@ for row in products_plazas:
                                        ,name       = name
                                        ,price      = price
                                        ,category_id= category_id
-                                       ,image_url  = image_url
+                                       ,image_url  = [image_url]
                                        ,description= description)
         if resp2==0:
             cont+=1
