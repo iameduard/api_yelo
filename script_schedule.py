@@ -15,6 +15,7 @@ now = datetime.now()
 f = open('out_script_schedule_'+datetime.now().strftime('%Y_%m_%d_%H')+'.txt', 'a')
 sys.stdout = f
 print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
+print('-'*80)
 
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('creds02.json', scope)
