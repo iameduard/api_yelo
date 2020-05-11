@@ -12,7 +12,7 @@ from datetime import date, datetime
 ##############################################
 orig_stdout = sys.stdout
 now = datetime.now()
-f = open('out_'+datetime.now().strftime('%Y_%m_%d_%H')+'.txt', 'a')
+f = open('out_script_schedule'+datetime.now().strftime('%Y_%m_%d_%H')+'.txt', 'a')
 sys.stdout = f
 print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 
