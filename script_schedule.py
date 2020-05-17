@@ -10,10 +10,10 @@ from datetime import date, datetime
 ##############################################
 # Google Drive API...
 ##############################################
-orig_stdout = sys.stdout
+#orig_stdout = sys.stdout
 now = datetime.now()
-f = open('out_script_schedule_'+datetime.now().strftime('%Y_%m_%d')+'.txt', 'a')
-sys.stdout = f
+#f = open('out_script_schedule_'+datetime.now().strftime('%Y_%m_%d')+'.txt', 'a')
+#sys.stdout = f
 print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 print('-'*80)
 
@@ -33,8 +33,15 @@ for script in schedule:
 		sheet_executions.update_cell(len(executions)+2, 1, job)
 		os.system('python3 '+script['SCRIPT'])
 
+sheet_crontab_log = client.open('schedule').worksheet('crontab log')
+
+crontab_log = sheet_crontab_log.get_all_records()
+
+sheet_crontab_log.update_cell(len(crontab_log)+2, 1, str(datetime.now()))
+
 print('Fecha de culminacion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
-sys.stdout = orig_stdout
-f.close()
+
+#sys.stdout = orig_stdout
+#f.close()
 
 
