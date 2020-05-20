@@ -14,8 +14,8 @@ from datetime import date, datetime
 now = datetime.now()
 #f = open('out_script_schedule_'+datetime.now().strftime('%Y_%m_%d')+'.txt', 'a')
 #sys.stdout = f
-print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
-print('-'*80)
+#print('Fecha de ejecucion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
+#print('-'*80)
 
 scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('creds02.json', scope)
@@ -39,7 +39,7 @@ crontab_log = sheet_crontab_log.get_all_records()
 
 sheet_crontab_log.update_cell(len(crontab_log)+2, 1, str(datetime.now()))
 
-print('Fecha de culminacion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
+#print('Fecha de culminacion del script:'+now.strftime("%Y_%m_%d_%H:%M:%S"))
 
 #sys.stdout = orig_stdout
 #f.close()
